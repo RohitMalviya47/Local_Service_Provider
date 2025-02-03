@@ -5,12 +5,10 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Login from "./components/Login";
-import SignUp from "./components/SignUp";
 import Header from "./components/Header";
-import ForgotPassword from './components/ForgetPassword';
 import Footer from "./components/Footer";
-import SearchBar from "./pages/SearchBar";
-import ServicesGrid from "./pages/ServicesGrid" // Import ServicesGrid
+import ServicesGrid from "./components/ServicesGrid";
+import ServiceDetail from "./pages/ServiceDetail"; // Import ServiceDetail
 
 function App() {
   return (
@@ -19,14 +17,12 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<ServicesGrid />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/service/:serviceName" element={<ServiceDetail />} /> {/* NEW ROUTE ADDED */}
         </Routes>
- 
         <Footer />
       </Router>
     </div>
