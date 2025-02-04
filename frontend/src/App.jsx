@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ServicesGrid from "./components/ServicesGrid";
 import ServiceDetail from "./pages/ServiceDetail"; // Import ServiceDetail
+import ForgotPassword from "./components/ForgetPassword";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />}/>
           <Route path="/service/:serviceName" element={<ServiceDetail />} /> {/* NEW ROUTE ADDED */}
         </Routes>
         <Footer />
