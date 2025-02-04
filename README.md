@@ -15,7 +15,7 @@ React:
 
 React is a JavaScript library used for building user interfaces, especially single-page applications (SPAs). You'll use React on the frontend to create dynamic, interactive components like user dashboards, search functionality for service providers, and booking forms.
 React's component-based architecture will make it easier to manage and scale the UI as the project grows.
-Node.js:
+Node.js:     
 
 Node.js allows you to run JavaScript on the server side, making it ideal for backend development in your MERN stack. It will handle your application's logic, communicate with MongoDB, manage API requests, and interact with the frontend built with React.
 Node.js is fast and efficient, especially when working with real-time applications, making it a good fit for your project where users will be interacting with service provider profiles in real time.
