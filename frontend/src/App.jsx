@@ -1,13 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-
 import Header from "./components/Header"
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Login from "./components/Login";
 import Footer from "./components/Footer";
-import Header from "./components/Header"
 import ServiceDetail from "./pages/ServiceDetail";
 import ForgotPassword from "./components/ForgetPassword";
 
