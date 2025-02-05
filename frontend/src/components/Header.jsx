@@ -37,7 +37,7 @@ const Header = () => {
           <Link to="/">MyWebsite</Link>
         </div>
 
-        {/* Desktop Navigation */}
+     
         <nav className="hidden md:flex space-x-8 text-lg font-semibold justify-center w-full">
           <Link to="/" className="text-gray-700 hover:text-blue-500">Home</Link>
           <Link to="/services" className="text-gray-700 hover:text-blue-500">Services</Link>
