@@ -5,7 +5,6 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Login from "./components/Login";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ServiceDetail from "./pages/ServiceDetail";
 import ForgotPassword from "./components/ForgetPassword";
