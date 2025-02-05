@@ -41,6 +41,7 @@ const Header = () => {
         <nav className="hidden md:flex space-x-8 text-lg font-semibold justify-center w-full">
           <Link to="/" className="text-gray-700 hover:text-blue-500">Home</Link>
           <Link to="/services" className="text-gray-700 hover:text-blue-500">Services</Link>
+        
           <Link to="/contact" className="text-gray-700 hover:text-blue-500">Contact</Link>
           <Link to="/login" className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Login</Link>
         </nav>

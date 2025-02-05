@@ -7,9 +7,10 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Login from "./components/Login";
 import Footer from "./components/Footer";
+import Header from "./components/Header"
 import ServiceDetail from "./pages/ServiceDetail";
 import ForgotPassword from "./components/ForgetPassword";
-// import Onboarding from "./pages/Onboarding"; // ✅ Import Onboarding
+
 
 function App() {
   return (
