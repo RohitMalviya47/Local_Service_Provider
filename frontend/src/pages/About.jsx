@@ -2,11 +2,12 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import aboutImage from '../assets/about.jpg'; // Tum apni image ka path dena
-
+ 
 const About = () => {
   return (
     <div>
       {/* About Section */}
+      <Headers></Headers>
       <div className="container my-5">
         <div className="row align-items-center">
           {/* Left Image (smaller image) */}
@@ -39,5 +40,4 @@ const About = () => {
     </div>
   );
 };
-
 export default About;
