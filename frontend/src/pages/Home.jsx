@@ -9,7 +9,6 @@ const Home = () => {
       <Hero />
       <SearchBar />
       <ServicesGrid/>
-      
       </div>
    
   );

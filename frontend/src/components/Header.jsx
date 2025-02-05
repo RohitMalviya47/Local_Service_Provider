@@ -5,20 +5,18 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Scroll event handle karne ke liye
   const handleScroll = () => {
     if (window.scrollY > 50) {
-      setIsScrolled(true); // Agar scroll 50px se zyada ho gaya, navbar white ho jayega
+      setIsScrolled(true); 
     } else {
-      setIsScrolled(false); // Agar scroll 50px se kam ho, navbar transparent rahega
+      setIsScrolled(false);
     }
   };
 
-  // Scroll event listener ko component mount hone par add karna
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     
-    // Component unmount hote waqt event listener ko remove kar dena
+   
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
