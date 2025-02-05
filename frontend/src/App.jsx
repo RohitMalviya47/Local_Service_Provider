@@ -9,7 +9,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ServiceDetail from "./pages/ServiceDetail";
 import ForgotPassword from "./components/ForgetPassword";
-import Onboarding from "./pages/Onboarding"; // ✅ Import Onboarding
+// import Onboarding from "./pages/Onboarding"; // ✅ Import Onboarding
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
       <Router>
         <Header/>
         <Routes>
-          <Route path="/" element={<Onboarding />} />  {/* ✅ Default Page Onboarding */}
-          <Route path="/home" element={<Home />} />
+       {/* ✅ Default Page Onboarding */}
+          <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -26,6 +26,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/service/:serviceName" element={<ServiceDetail />} />
         </Routes>
+        <Footer/>
       </Router>
     </div>
   );
