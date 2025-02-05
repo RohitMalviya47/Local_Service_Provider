@@ -7,25 +7,25 @@ import Contact from "./pages/Contact";
 import Login from "./components/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ServicesGrid from "./components/ServicesGrid";
-import ServiceDetail from "./pages/ServiceDetail"; // Import ServiceDetail
+import ServiceDetail from "./pages/ServiceDetail";
 import ForgotPassword from "./components/ForgetPassword";
+import Onboarding from "./pages/Onboarding"; // ✅ Import Onboarding
 
 function App() {
   return (
     <div className="bg-gray-300">
       <Router>
-        <Header />
+        <Header/>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Onboarding />} />  {/* ✅ Default Page Onboarding */}
+          <Route path="/home" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPassword />}/>
-          <Route path="/service/:serviceName" element={<ServiceDetail />} /> {/* NEW ROUTE ADDED */}
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/service/:serviceName" element={<ServiceDetail />} />
         </Routes>
-        <Footer />
       </Router>
     </div>
   );
