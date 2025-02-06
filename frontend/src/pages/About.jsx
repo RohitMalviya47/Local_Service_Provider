@@ -7,7 +7,6 @@ const About = () => {
   return (
     <div>
       {/* About Section */}
-      <Headers></Headers>
       <div className="container my-5">
         <div className="row align-items-center">
           {/* Left Image (smaller image) */}
