@@ -6,7 +6,6 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Login from "./components/Login";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
 import ServiceDetail from "./pages/ServiceDetail";
 import ForgotPassword from "./components/ForgetPassword";
 import OnboardingScreen from "./components/OnboardingScreen";  // Add this import
@@ -32,7 +31,7 @@ function App() {
         <OnboardingScreen onComplete={handleOnboardingComplete} />
       ) : (
         <Router>
-          <Header />
+          
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
@@ -42,7 +41,7 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/service/:serviceName" element={<ServiceDetail />} />
           </Routes>
-          <Footer />
+         
         </Router>
       )}
     </div>

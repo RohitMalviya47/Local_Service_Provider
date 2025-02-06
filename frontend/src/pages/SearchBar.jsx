@@ -24,7 +24,7 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative w-full max-w-4xl mx-auto my-16 px-4 sm:px-6 lg:px-8">
       {/* Search Bar Container */}
       <div className="flex flex-col sm:flex-row items-center bg-white shadow-lg rounded-full p-3 sm:p-4 w-full border-2 border-gray-300">
         

@@ -2,10 +2,13 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import aboutImage from '../assets/about.jpg'; // Tum apni image ka path dena
+import Header from '../components/Header';
+import Footer from '../components/Footer';
  
 const About = () => {
   return (
     <div>
+      <Header></Header>
       {/* About Section */}
       <div className="container my-5">
         <div className="row align-items-center">
@@ -36,6 +39,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+ 
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -16,7 +17,8 @@ const AuthForm = () => {
     }
   };
 
-  return (
+  return (<>
+    
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-600 via-indigo-700 to-blue-600">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
@@ -73,6 +75,7 @@ const AuthForm = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

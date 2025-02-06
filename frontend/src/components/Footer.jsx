@@ -24,16 +24,7 @@ const Footer = () => {
           </div>
 
           {/* Right Section: Nav Links */}
-          <div className="w-full sm:w-1/2 flex">
-            <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
-            <ul className="space-y-2 text-sm flex gap-10">
-              <li><Link to="/" className="hover:text-blue-400">Home</Link></li>
-              <li><Link to="/services" className="hover:text-blue-400">Services</Link></li>
-              <li><Link to="/about" className="hover:text-blue-400">About Us</Link></li>
-              <li><Link to="/contact" className="hover:text-blue-400">Contact</Link></li>
-              <li><Link to="/login" className="hover:text-blue-400">Login</Link></li>
-            </ul>
-          </div>
+           
         </div>
 
         {/* Subscription Section */}

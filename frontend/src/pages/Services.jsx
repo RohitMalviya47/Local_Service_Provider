@@ -6,6 +6,8 @@ import Carpenter from "../assets/plumber2.jpeg";
 import Painter from "../assets/plumber3.jpeg";
 import ServiceCard from "../pages/ServiceCard";
 import SearchBar from "./SearchBar";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Services = () => {
   const navigate = useNavigate(); // Navigation hook
@@ -21,7 +23,8 @@ const Services = () => {
   const servicesToShow = showAll ? services : services.slice(0, 4);
 
   return (
-    <div className="container mx-auto py-12">
+    <>    <Header></Header>
+    <div className="container mx-auto py-12 pt-72">
       <h2 className="text-center text-3xl font-semibold mb-5">Our Services</h2>
       <SearchBar />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -45,6 +48,9 @@ const Services = () => {
         </div>
       )}
     </div>
+    <Footer></Footer>
+    </>
+
   );
 };
 

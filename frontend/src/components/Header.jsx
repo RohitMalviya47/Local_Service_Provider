@@ -1,72 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaHome, FaInbox, FaCog, FaUser, FaBell, FaHistory, FaTools } from "react-icons/fa";
+import { MdMiscellaneousServices } from "react-icons/md";
+import { HiMenu, HiX } from "react-icons/hi";
+
+const menuItems = [
+  { name: "Home", icon: <FaHome />, path: "/" },
+  { name: "Inbox", icon: <FaInbox />, path: "/inbox" },
+  { name: "Ongoing Services", icon: <MdMiscellaneousServices />, path: "/ongoing-services" },
+  { name: "Service History", icon: <FaHistory />, path: "/service-history" },
+  { name: "Notification", icon: <FaBell />, path: "/notifications" },
+  { name: "Profile", icon: <FaUser />, path: "/profile" },
+  { name: "Settings", icon: <FaCog />, path: "/settings" },
+];
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const handleScroll = () => {
-    if (window.scrollY > 50) {
-      setIsScrolled(true); 
-    } else {
-      setIsScrolled(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    
-   
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <header
-      className={`fixed w-full z-10 top-0 transition-all ease-in-out ${isScrolled ? "bg-white shadow-md" : "bg-transparent"}`}
-      style={{ transition: "background-color 0.3s ease-in-out" }}
-    >
+    <header className="fixed w-full bg-gray-900 text-white shadow-md z-10 top-0">
       <div className="container mx-auto flex justify-between items-center px-6 py-4">
         {/* Logo */}
-        <div className="text-2xl font-bold text-blue-600">
-          <Link to="/">MyWebsite</Link>
-        </div>
+        <div className="text-2xl font-bold">MyWebsite</div>
 
-     
-        <nav className="hidden md:flex space-x-8 text-lg font-semibold justify-center w-full">
-          <Link to="/" className="text-gray-700 hover:text-blue-500">Home</Link>
-          <Link to="/services" className="text-gray-700 hover:text-blue-500">Services</Link>
-          <Link to="/about" className="text-gray-700 hover:text-blue-500">About</Link>
-          <Link to="/contact" className="text-gray-700 hover:text-blue-500">Contact</Link>
-          <Link to="/login" className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Login</Link>
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex space-x-6 text-lg">
+          {menuItems.map((item, index) => (
+            <Link key={index} to={item.path} className="flex items-center space-x-2 hover:text-gray-300 no-underline text-white">
+              {item.icon} <span>{item.name}</span>
+            </Link>
+          ))}
         </nav>
 
+        {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-gray-700 focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+          <button onClick={() => setIsSidebarOpen(true)}>
+            <HiMenu className="w-8 h-8" />
           </button>
         </div>
       </div>
 
-  
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <nav className="flex flex-col space-y-4 py-4 px-6">
-            <Link to="/" className="text-lg text-gray-700 hover:bg-gray-100 py-2">Home</Link>
-            <Link to="/services" className="text-lg text-gray-700 hover:bg-gray-100 py-2">Services</Link>
-            <Link to="/about" className="text-gray-700 hover:text-blue-500">About</Link>
-            <Link to="/contact" className="text-lg text-gray-700 hover:bg-gray-100 py-2">Contact</Link>
-            <Link to="/login" className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Login</Link>
-          </nav>
+      {/* Sidebar */}
+      <div
+        className={`fixed inset-0 bg-gray-900 bg-opacity-90 transition-transform transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:hidden w-64 p-6 flex flex-col h-full`}
+      >
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-bold">Menu</h2>
+          <button onClick={() => setIsSidebarOpen(false)}>
+            <HiX className="w-8 h-8" />
+          </button>
         </div>
-      )}
+
+        <nav className="flex flex-col space-y-4">
+          {menuItems.map((item, index) => (
+            <Link
+              key={index}
+              to={item.path}
+              className="flex items-center space-x-3 text-lg hover:text-gray-300 no-underline text-white"
+              onClick={() => setIsSidebarOpen(false)}
+            >
+              {item.icon} <span>{item.name}</span>
+            </Link>
+          ))}
+        </nav>
+      </div>
     </header>
   );
 };
