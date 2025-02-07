@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaHome, FaInbox, FaCog, FaUser, FaBell } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
-
+import img from '../assets/service_logo_transparent-removebg-preview.png'
 const menuItems = [
   { name: "Home", icon: <FaHome />, path: "/" },
   { name: "Service", icon: <FaInbox />, path: "/services" },
@@ -39,10 +39,10 @@ const Header = () => {
   const headerBgClass = isHomePage && !isScrolled ? "bg-transparent" : "bg-gray-900";
 
   return (
-    <header className={`fixed w-full text-white shadow-md z-10 top-0 transition-all duration-300 ${headerBgClass}`}>
-      <div className="container mx-auto flex justify-between items-center px-6 py-4">
+    <header className={`fixed w-full text-white font-bold z-10 top-0 transition-all duration-300 ${headerBgClass}`}>
+      <div className="container mx-auto  flex justify-between items-center px-6 py-4">
         {/* Logo */}
-        <div className="text-2xl font-bold">MyWebsite</div>
+        <div className="p-0"><img src={img} width={100} alt="" /></div>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-6 text-lg">
@@ -75,15 +75,15 @@ const Header = () => {
             </button>
           </div>
 
-          <nav className="flex flex-col space-y-4">
+          <nav className="flex flex-col !no-underline space-y-4">
             {menuItems.map((item, index) => (
               <Link
                 key={index}
                 to={item.path}
-                className="flex items-center space-x-3 text-lg hover:text-gray-300 no-underline text-white"
+                className="flex items-center space-x-3 text-lg hover:text-gray-300  !no-underline text-white"
                 onClick={() => setIsSidebarOpen(false)} // Sidebar close hoga jab kisi link pe click karenge
               >
-                {item.icon} <span>{item.name}</span>
+                {item.icon} <span className=" !no-underline">{item.name}</span>
               </Link>
             ))}
           </nav>
