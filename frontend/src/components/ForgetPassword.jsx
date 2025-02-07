@@ -12,9 +12,9 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-red-400 via-yellow-500 to-red-600">
+    <div className="flex justify-center items-center min-h-screen  bg-gray-900">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Reset Password</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">Reset Password</h2>
         <input
           type="email"
           className="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-red-500"
@@ -30,7 +30,7 @@ const ForgotPassword = () => {
         </button>
         <div className="text-center">
           <button
-            className="text-blue-500 hover:text-blue-700"
+            className="text-gray-900 hover:text-blue-700"
             onClick={() => navigate('/login')} // Navigate back to login page
           >
             Back to Login

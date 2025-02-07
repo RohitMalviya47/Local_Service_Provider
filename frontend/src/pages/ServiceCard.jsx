@@ -1,16 +1,14 @@
-
 import React from "react";
 
 const ServiceCard = ({ title, image, onClick }) => {
   return (
-    <div
-      className="service-card bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition-all cursor-pointer border-4 border-red-500"
-      onClick={onClick}
-    >
-      <div className="flex justify-center mb-4">
-        <img src={image} alt={title} className="w-24 h-24 object-cover" />
+    <div className="w-full p-2" onClick={onClick}>
+      <div className="flex flex-col items-center justify-center bg-transparent rounded-lg p-4">
+        <div className="w-16 h-16 flex items-center justify-center rounded-full bg-gray-100">
+          <img src={image} alt={title} className="w-10 h-10" />
+        </div>
+        <p className="mt-2 text-center text-gray-800 font-semibold">{title}</p>
       </div>
-      <h3 className="text-center text-xl font-semibold">{title}</h3>
     </div>
   );
 };
