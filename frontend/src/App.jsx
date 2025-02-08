@@ -8,14 +8,13 @@ import Notification from "./pages/Notification";
 import Footer from "./components/Footer";
 import ServiceDetail from "./pages/ServiceDetail";
 import ForgotPassword from "./components/ForgetPassword";
-import OnboardingScreen from "./components/OnboardingScreen";
 import Setting from "./pages/Setting";
 import Logo from "./components/Logo";
 
 
 function App() {
   const [currentPage, setCurrentPage] = useState("logo");
-  const [showOnboarding, setShowOnboarding] = useState(false);
+
 
   useEffect(() => {
     // Logo 3 sec tak dikhana hai, uske baad direct home page pe le jana hai
@@ -25,18 +24,6 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    // Onboarding screen check karna
-    const onboardingComplete = localStorage.getItem("onboardingComplete");
-    if (!onboardingComplete) {
-      setShowOnboarding(true);
-    }
-  }, []);
-
-  const handleOnboardingComplete = () => {
-    localStorage.setItem("onboardingComplete", "true");
-    setShowOnboarding(false);
-  };
 
   if (currentPage === "logo") {
     return <Logo />;
@@ -44,9 +31,6 @@ function App() {
 
   return (
     <div className="bg-gray-300">
-      {showOnboarding ? (
-        <OnboardingScreen onComplete={handleOnboardingComplete} />
-      ) : (
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -58,9 +42,8 @@ function App() {
              <Route path="/login" element={<Login/>}/>
             <Route path="/setting" element={<Setting />} />
           </Routes>
-         
         </Router>
-      )}
+     
     </div>
   );
 }
