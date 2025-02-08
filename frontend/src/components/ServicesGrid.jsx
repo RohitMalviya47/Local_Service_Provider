@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Electrician from '../assets/Electriction.png';
-import Plumber from "../assets/plumber.jpeg";
-import Carpenter from "../assets/plumber2.jpeg";
-import Painter from "../assets/plumber3.jpeg";
+import Electrician from '../assets/electrician.png';
+import Plumber from "../assets/plumber.png";
+import Carpenter from "../assets/carpenter.png";
+import Painter from "../assets/painting.png";
 import ServiceCard from "../pages/ServiceCard";
 
 const ServicesGrid = () => {
@@ -18,13 +18,14 @@ const ServicesGrid = () => {
     { title: "Painter", image: Painter },
     { title: "Carpenter", image: Carpenter },
     { title: "Painter", image: Painter },
-
   ];
 
   return (
     <div className="container mx-auto py-12">
       <h2 className="text-center text-3xl font-semibold mb-5">Our Services</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+      
+      {/* 👇 GRID LAYOUT FIXED 👇 */}
+      <div className="grid grid-cols-3 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
         {services.map((service, index) => (
           <ServiceCard
             key={index}

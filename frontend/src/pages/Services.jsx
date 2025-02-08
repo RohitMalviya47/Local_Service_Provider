@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Electrician from '../assets/Electriction.png';
-import Plumber from "../assets/plumber.jpeg";
-import Carpenter from "../assets/plumber2.jpeg";
-import Painter from "../assets/plumber3.jpeg";
+import electrician from '../assets/electrician.png';
+import Plumber from "../assets/plumber.png";
+import Carpenter from "../assets/carpenter.png";
+import Painter from "../assets/painting.png";
 import ServiceCard from "../pages/ServiceCard";
 import SearchBar from "./SearchBar";
 import Header from "../components/Header";
@@ -14,7 +14,7 @@ const Services = () => {
   const [showAll, setShowAll] = useState(false);
 
   const services = [
-    { title: "Electrician", image: Electrician },
+    { title: "electrician", image: electrician },
     { title: "Plumber", image: Plumber },
     { title: "Carpenter", image: Carpenter },
     { title: "Painter", image: Painter },
