@@ -4,10 +4,10 @@ import electrician from '../assets/electrician.png';
 import Plumber from "../assets/plumber.png";
 import Carpenter from "../assets/carpenter.png";
 import Painter from "../assets/painting.png";
-import ServiceCard from "../pages/ServiceCard";
-import SearchBar from "./SearchBar";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import ServiceCard from "../components/Common/ServiceCard";
+import SearchBar from "../components/Common/SearchBar";
+import Header from "../components/Common/Header";
+import Footer from "../components/Common/Footer";
 
 const Services = () => {
   const navigate = useNavigate(); // Navigation hook

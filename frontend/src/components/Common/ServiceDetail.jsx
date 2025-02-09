@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import serviceData from "../assets/serviceData"; // Service data import
+import serviceData from "../../assets/serviceData"; // Service data import
 
 const ServiceDetail = () => {
   const { serviceName } = useParams(); // URL se service ka naam le rahe hain

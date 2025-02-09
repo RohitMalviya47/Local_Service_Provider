@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import img from '../assets/service_logo_transparent-removebg-preview.png'
+import img from '../../assets/service_logo_transparent-removebg-preview.png'
 
 export default function Logo() {
   const [isVisible, setIsVisible] = useState(false);

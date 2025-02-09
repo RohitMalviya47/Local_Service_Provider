@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import man from "../assets/man.png"
+import man from "../../assets/man.png"
 
 const UserTypeSelection = ({ onUserSelect }) => {
   const navigate = useNavigate();

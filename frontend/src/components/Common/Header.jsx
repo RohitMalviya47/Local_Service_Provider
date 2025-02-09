@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaHome, FaInbox, FaCog, FaUser, FaBell } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
-import img from '../assets/service_logo_transparent-removebg-preview.png'
+import img from '../../assets/service_logo_transparent-removebg-preview.png'
 const menuItems = [
   { name: "Home", icon: <FaHome />, path: "/" },
   { name: "Service", icon: <FaInbox />, path: "/services" },

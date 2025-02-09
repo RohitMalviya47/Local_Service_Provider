@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Electrician from '../assets/electrician.png';
-import Plumber from "../assets/plumber.png";
-import Carpenter from "../assets/carpenter.png";
-import Painter from "../assets/painting.png";
-import ServiceCard from "../pages/ServiceCard";
+import Electrician from '../../assets/electrician.png';
+import Plumber from "../../assets/plumber.png";
+import Carpenter from "../../assets/carpenter.png";
+import Painter from "../../assets/painting.png";
+import ServiceCard from "../Common/ServiceCard";
 
 const ServicesGrid = () => {
   const navigate = useNavigate(); // Navigation hook

@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import video from '../assets/stock.mp4';
+import video from '../../assets/stock.mp4';
 
 
 const Hero = () => {
