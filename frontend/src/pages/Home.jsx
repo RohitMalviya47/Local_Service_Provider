@@ -1,9 +1,9 @@
 import React from "react";
-import SearchBar from "./SearchBar";
-import ServicesGrid from "../components/ServicesGrid"; 
-import Hero from "../components/Hero";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import SearchBar from "../components/Common/SearchBar";
+import ServicesGrid from "../components/Common/ServicesGrid"; 
+import Hero from "../components/Common/Hero";
+import Header from "../components/Common/Header";
+import Footer from "../components/Common/Footer";
 
 const Home = () => {
   return (

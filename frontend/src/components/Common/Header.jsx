@@ -1,24 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaHome, FaInbox, FaCog, FaUser, FaBell } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
-import img from '../assets/service_logo_transparent-removebg-preview.png'
-const menuItems = [
-  { name: "Home", icon: <FaHome />, path: "/" },
-  { name: "Service", icon: <FaInbox />, path: "/services" },
-  { name: "Notification", icon: <FaBell />, path: "/notification" },
-  { name: "Profile", icon: <FaUser />, path: "/profile" },
-  { name: "Settings", icon: <FaCog />, path: "/setting" },
-  { name: "Login", icon: <FaCog />, path: "/login" },
-
-];
+import img from "../../assets/service_logo_transparent-removebg-preview.png";
 
 const Header = () => {
-  const location = useLocation(); // Current page ka path check karne ke liye
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [userType, setUserType] = useState(localStorage.getItem("userType"));
 
-  // Scroll effect ke liye
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -34,15 +24,30 @@ const Header = () => {
     };
   }, []);
 
-  // Agar Home page hai to transparency allow karo, baaki sab pe black rahega
-  const isHomePage = location.pathname === "/";
-  const headerBgClass = isHomePage && !isScrolled ? "bg-transparent" : "bg-gray-900";
+  const headerBgClass = isScrolled ? "bg-gray-900" : "bg-transparent";
+
+  // 🔥 Navigation Menu Based on User Type
+  const menuItems = userType === "provider"
+    ? [
+        { name: "Home", icon: <FaHome />, path: "/" },
+        { name: "Jobs", icon: <FaInbox />, path: "/jobs" },
+        { name: "Notifications", icon: <FaBell />, path: "/notification" },
+        { name: "Profile", icon: <FaUser />, path: "/profile" },
+        { name: "Settings", icon: <FaCog />, path: "/setting" },
+      ]
+    : [
+        { name: "Home", icon: <FaHome />, path: "/" },
+        { name: "Services", icon: <FaInbox />, path: "/services" },
+        { name: "Notifications", icon: <FaBell />, path: "/notification" },
+        { name: "Profile", icon: <FaUser />, path: "/profile" },
+        { name: "Settings", icon: <FaCog />, path: "/setting" },
+      ];
 
   return (
     <header className={`fixed w-full text-white font-bold z-10 top-0 transition-all duration-300 ${headerBgClass}`}>
-      <div className="container mx-auto  flex justify-between items-center px-6 py-4">
+      <div className="container mx-auto flex justify-between items-center px-6 py-4">
         {/* Logo */}
-        <div className="p-0"><img src={img} width={100} alt="" /></div>
+        <div><img src={img} width={100} alt="Logo" /></div>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-6 text-lg">
@@ -75,15 +80,15 @@ const Header = () => {
             </button>
           </div>
 
-          <nav className="flex flex-col !no-underline space-y-4">
+          <nav className="flex flex-col space-y-4">
             {menuItems.map((item, index) => (
               <Link
                 key={index}
                 to={item.path}
-                className="flex items-center space-x-3 text-lg hover:text-gray-300  !no-underline text-white"
-                onClick={() => setIsSidebarOpen(false)} // Sidebar close hoga jab kisi link pe click karenge
+                className="flex items-center space-x-3 text-lg hover:text-gray-300 text-white"
+                onClick={() => setIsSidebarOpen(false)}
               >
-                {item.icon} <span className=" !no-underline">{item.name}</span>
+                {item.icon} <span>{item.name}</span>
               </Link>
             ))}
           </nav>
