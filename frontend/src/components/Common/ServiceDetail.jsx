@@ -7,36 +7,37 @@ const ServiceDetail = () => {
   const providers = serviceData[serviceName] || []; // Service data filter
 
   return (
-    <div className="container mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold text-center text-blue-600">Service: {serviceName}</h1>
-      <p className="mt-4 text-gray-700 text-center text-lg">Here are the best service providers for {serviceName}:</p>
+    <div className="container mx-auto py-6 px-4">
+      <h1 className="text-2xl font-bold text-center text-blue-600">Service: {serviceName}</h1>
+      <p className="mt-2 text-gray-700 text-center text-md">Find the best service providers for {serviceName}:</p>
 
-      {/* Desktop pe 4 items ek row me, 5th se naye row me */}
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {/* Scrollable List - Compact Cards */}
+      <div className="mt-4 flex flex-wrap justify-center gap-4 overflow-y-auto max-h-screen pb-4">
         {providers.map((provider) => (
           <div
             key={provider.id}
-            className="bg-white shadow-lg p-6 rounded-lg transition-all duration-300 hover:shadow-xl 
-            flex flex-col md:flex-row md:items-center md:space-x-6 w-full border border-gray-300"
+            className="bg-white shadow-md p-4 rounded-lg flex items-center w-full max-w-sm border border-gray-200"
           >
-            {/* Image: Mobile pe upar, Laptop pe left side */}
+            {/* Image on left */}
             <img
               src={provider.image}
               alt={provider.name}
-              className="w-full md:w-40 h-40 object-cover rounded-lg border-4 border-blue-400"
+              className="w-16 h-16 object-cover rounded-full border-2 border-blue-400"
             />
             
             {/* Details */}
-            <div className="text-center md:text-left mt-4 md:mt-0">
-              <h3 className="text-2xl font-semibold text-gray-900">{provider.name}</h3>
-              <p className="text-gray-600">{provider.experience} of Experience</p>
-              <p className="text-yellow-500 font-semibold">⭐ Rating: {provider.rating}</p>
-              <p className="text-gray-600">📍 Location: {provider.location}</p>
-              <p className="text-gray-600">📞 Contact: {provider.contact}</p>
-
-              {/* Button for Call or Hire */}
+            <div className="ml-4 flex-1">
+              <h3 className="text-lg font-semibold text-gray-900">{provider.name} <span className="text-blue-500">✔</span></h3>
+              <p className="text-gray-600 text-sm">⭐ {provider.rating} ({provider.reviews} reviews)</p>
+              <p className="text-gray-600 text-sm">{provider.experience} Experience</p>
+              <p className="text-gray-800 font-semibold">₹ {provider.price}</p>
+              <p className={`text-sm font-semibold ${provider.availability ? "text-green-500" : "text-red-500"}`}>
+                {provider.availability ? "Available Now" : "Not Available"}
+              </p>
+              
+              {/* Button */}
               <button
-                className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all"
+                className="mt-2 bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-700"
               >
                 Hire Now
               </button>
