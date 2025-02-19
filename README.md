@@ -3,7 +3,7 @@
 he idea for your local service provider project is great! In this, users will be able to see profiles of local service providers (like plumbers, electricians, etc.) and hire them based on their needs. Building this project using the MERN stack (MongoDB, Express.js, React, Node.js) is a solid choice because this stack is powerful, scalable, and widely used for modern web development.
   
 Overview of the MERN Stack:                     
-MongoDB:                                                                   
+MongoDB:                                                                                      
                              
 MongoDB is a NoSQL database that stores data in JSON-like documents, making it easy to handle complex and unstructured data. You can use MongoDB to store the service provider data (like name, contact details, expertise, ratings, etc.).
 Its flexible schema allows you to modify and manage data efficiently as your application grows.          
