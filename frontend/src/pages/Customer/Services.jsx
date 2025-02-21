@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import electrician from '../../assets/electrician.png';
 import Plumber from "../../assets/plumber.png";
@@ -8,6 +8,7 @@ import ServiceCard from "../../components/Common/ServiceCard";
 import SearchBar from "../../components/Common/SearchBar";
 import Header from "../../components/Common/Header";
 import Footer from "../../components/Common/Footer";
+import backgroundImage from "../../assets/bg_services.jpg"; // Add your background image path
 
 const Services = () => {
   const navigate = useNavigate(); // Navigation hook
@@ -28,11 +29,15 @@ const Services = () => {
   ];
 
   return (
-    <>    <Header></Header>
-    <div className="container mx-auto py-12 pt-72">
-      <h2 className="text-center text-3xl font-semibold mb-5">Our Services</h2>
+    <>
+      <Header />
+      <div
+        className="container py-12 pt-72 bg-cover bg-center bg-no-repeat w-full h-1/4 bg-black"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      ></div>
+      <h2 className="text-center text-3xl font-semibold mb-5 text-white">Our Services</h2>
       <SearchBar />
-      <div className="grid grid-cols-3 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {services.map((service, index) => (
           <ServiceCard
             key={index}
@@ -42,8 +47,7 @@ const Services = () => {
           />
         ))}
       </div>
-    </div>
-    <Footer></Footer>
+      <Footer />
     </>
   );
 };
