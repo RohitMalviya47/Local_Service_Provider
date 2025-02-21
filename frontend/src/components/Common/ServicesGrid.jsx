@@ -14,17 +14,13 @@ const ServicesGrid = () => {
     { title: "Plumber", image: Plumber },
     { title: "Carpenter", image: Carpenter },
     { title: "Painter", image: Painter },
-    { title: "Carpenter", image: Carpenter },
-    { title: "Painter", image: Painter },
-    { title: "Carpenter", image: Carpenter },
-    { title: "Painter", image: Painter },
   ];
 
   return (
     <div className="container mx-auto py-12">
       <h2 className="text-center text-3xl font-semibold mb-5">Our Services</h2>
       
-      {/* 👇 GRID LAYOUT FIXED 👇 */}
+      {/* GRID LAYOUT */}
       <div className="grid grid-cols-3 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
         {services.map((service, index) => (
           <ServiceCard
@@ -34,6 +30,16 @@ const ServicesGrid = () => {
             onClick={() => navigate(`/service/${service.title}`)} // Navigate to service detail page
           />
         ))}
+      </div>
+      
+      {/* See All Services Button */}
+      <div className="text-center mt-5">
+        <button
+          onClick={() => navigate("/services")}
+          className="bg-red-700 text-white px-4 py-2 rounded"
+        >
+          See All Services
+        </button>
       </div>
     </div>
   );

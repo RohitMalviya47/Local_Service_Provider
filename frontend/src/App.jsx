@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./components/Common/Login";
-import Services from "./pages/Services";
+import Services from "./pages/Customer/Services";
 import Profile from "./pages/Profile";
 import Notification from "./components/Common/Notification";
 import Footer from "./components/Common/Footer";
@@ -32,12 +32,12 @@ function App() {
           <UserTypeSelection onUserSelect={() => setCurrentPage("home")} />
         ) : (
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/notification" element={<Notification />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/service/:serviceName" element={<ServiceDetail />} />
+            <Route path="/" element={<Home />}/>
+            <Route path="/services" element={<Services/>} />
+            <Route path="/notification" element={<Notification/>} />
+            <Route path="/profile" element={<Profile/>} />
+            <Route path="/forgot-password" element={<ForgotPassword />}/>
+            <Route path="/service/:serviceName" element={<ServiceDetail/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/setting" element={<Setting />} />
           </Routes>
