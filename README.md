@@ -4,7 +4,7 @@ he idea for your local service provider project is great! In this, users will be
   
 Overview of the MERN Stack:                     
 MongoDB:                                                                                                                                           
-                                              
+                                                           
 MongoDB is a NoSQL database that stores data in JSON-like documents, making it easy to handle complex and unstructured data. You can use MongoDB to store the service provider data (like name, contact details, expertise, ratings, etc.).
 Its flexible schema allows you to modify and manage data efficiently as your application grows.          
 Express.js:                            
