@@ -12,7 +12,7 @@ Express.js:
 Express.js is a web framework for Node.js that helps in building web applications and APIs quickly. You'll use Express to create API endpoints like user login, registration, creating/updating service provider profiles, managing bookings, etc.
 With Express, you can easily manage backend logic and CRUD operations (Create, Read, Update, Delete) for your application.           
 React:                 
-                                                        
+                                                                                              
 React is a JavaScript library used for building user interfaces, especially single-page applications (SPAs). You'll use React on the frontend to create dynamic, interactive components like user dashboards, search functionality for service providers, and booking forms.
 React's component-based architecture will make it easier to manage and scale the UI as the project grows.            
 Node.js:     
