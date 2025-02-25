@@ -11,11 +11,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -24,13 +20,14 @@ const Header = () => {
     };
   }, []);
 
-  const headerBgClass = isScrolled ? "bg-gray-900" : "bg-transparent";
+  const textColorClass = isScrolled ? "text-white" : "text-white";
+  const translateClass = isScrolled ? "-translate-y-full" : "translate-y-0";
 
   // 🔥 Navigation Menu Based on User Type
   const menuItems = userType === "provider"
     ? [
         { name: "Home", icon: <FaHome />, path: "/" },
-        { name: "Jobs", icon: <FaInbox />, path: "/jobs" },
+        { name: "Jobs", icon: <FaInbox />, path: " /jobs" },
         { name: "Notifications", icon: <FaBell />, path: "/notification" },
         { name: "Profile", icon: <FaUser />, path: "/profile" },
         { name: "Settings", icon: <FaCog />, path: "/setting" },
@@ -44,18 +41,19 @@ const Header = () => {
       ];
 
   return (
-    <header className={`fixed w-full text-white font-bold z-10 top-0 transition-all duration-300 ${headerBgClass}`}>
-      <div className="container mx-auto flex justify-between items-center px-6 py-4">
+    <header className={`fixed w-full font-bold z-10 top-0 transition-transform duration-300 ${translateClass}`}>
+      <div className="container mx-auto flex justify-between items-center px-6 rounded-lg">
         {/* Logo */}
-        <div><img src={img} width={100} alt="Logo" /></div>
+        <div><img src={img} width={100} alt="Logo" className="rounded-full" /></div>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-6 text-lg">
+        <nav className={`hidden md:flex space-x-6 text-lg ${textColorClass}`}>
           {menuItems.map((item, index) => (
             <Link
               key={index}
               to={item.path}
-              className="flex items-center space-x-2 hover:text-gray-300 text-white no-underline"
+              className={`flex items-center space-x-2 hover:text-gray-500  rounded-md p-2 ${textColorClass}`}
+              style={{textDecoration:'none'}}
             >
               {item.icon} <span>{item.name}</span>
             </Link>
@@ -65,14 +63,14 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button onClick={() => setIsSidebarOpen(true)}>
-            <HiMenu className="w-8 h-8" />
+            <HiMenu className={`w-8 h-8 ${textColorClass}`} />
           </button>
         </div>
       </div>
 
       {/* Sidebar (Mobile Menu) */}
       {isSidebarOpen && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-90 transition-transform transform md:hidden w-64 p-6 flex flex-col h-full">
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-90 transition-transform transform md:hidden w-64 p-6 flex flex-col h-full rounded-lg">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold">Menu</h2>
             <button onClick={() => setIsSidebarOpen(false)}>
@@ -85,8 +83,9 @@ const Header = () => {
               <Link
                 key={index}
                 to={item.path}
-                className="flex items-center space-x-3 text-lg hover:text-gray-300 text-white"
+                className="flex items-center space-x-3 text-lg decoration-0 hover:text-gray-500 rounded-md p-2"
                 onClick={() => setIsSidebarOpen(false)}
+                style={{textDecoration:'none'}}
               >
                 {item.icon} <span>{item.name}</span>
               </Link>

@@ -37,7 +37,7 @@ const Services = () => {
       ></div>
       <h2 className="text-center text-3xl font-semibold mb-5 text-white">Our Services</h2>
       <SearchBar />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-3 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
         {services.map((service, index) => (
           <ServiceCard
             key={index}
