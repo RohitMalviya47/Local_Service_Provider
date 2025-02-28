@@ -8,7 +8,7 @@ MongoDB:
 MongoDB is a NoSQL database that stores data in JSON-like documents, making it easy to handle complex and unstructured data. You can use MongoDB to store the service provider data (like name, contact details, expertise, ratings, etc.).
 <<<<<<< HEAD
 Its flexible schema allows you to modify and manage data efficiently as your application grows.                                                                                                                                                                                        
-Express.js:                                                                                                                                                                                   
+Express.js:                                                                                                                                                                                             
                                                                                                
 Express.js is a web framework for Node.js that helps in building web applications and APIs quickly. You'll use Express to create API endpoints like user login, registration, creating/updating service provider profiles, managing bookings, etc.
 With Express, you can easily manage backend logic and CRUD operations (Create, Read, Update, Delete) for your application.           
