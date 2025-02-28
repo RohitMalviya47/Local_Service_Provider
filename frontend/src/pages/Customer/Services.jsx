@@ -8,7 +8,7 @@ import ServiceCard from "../../components/Common/ServiceCard";
 import SearchBar from "../../components/Common/SearchBar";
 import Header from "../../components/Common/Header";
 import Footer from "../../components/Common/Footer";
-import backgroundImage from "../../assets/bg_services.jpg"; // Add your background image path
+import BgImage from '../../assets/bg_pic1.webp'
 
 const Services = () => {
   const navigate = useNavigate(); // Navigation hook
@@ -31,13 +31,24 @@ const Services = () => {
   return (
     <>
       <Header />
-      <div
-        className="container py-12 pt-72 bg-cover bg-center bg-no-repeat w-full h-1/4 bg-black"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      ></div>
-      <h2 className="text-center text-3xl font-semibold mb-5 text-white">Our Services</h2>
+     <div className="lg:py-10 bg-black"></div>
+<div className="w-full py-10 flex flex-col md:flex-row justify-between items-center bg-black">
+  <div className="w-full md:w-1/2 text-center md:text-left p-10">
+    <h2 className="mb-4 text-gray-900 font-serif" style={{ fontSize: "60px", fontWeight: "bold" }}>
+      Our Premium Services
+    </h2>
+    <p className="text-lg text-gray-700 mb-6 font-serif" style={{ fontSize: "30px", fontWeight: "bold" }}>
+      We offer high-quality home services including electricians, plumbers, carpenters, and painters. Get reliable and professional services at your doorstep.
+    </p>
+  </div>
+  <div className="w-full md:w-1/2 flex justify-end items-center">
+    <img src={BgImage} alt="Services" className="w-90 rounded-lg" />
+  </div>
+</div>
+
+
       <SearchBar />
-      <div className="grid grid-cols-3 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10">
         {services.map((service, index) => (
           <ServiceCard
             key={index}

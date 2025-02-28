@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "../components/Common/SearchBar";
-import ServicesGrid from "../components/Common/ServicesGrid"; 
+// import ServicesGrid from "../components/Common/ServicesGrid"; 
 import Hero from "../components/Common/Hero";
 import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
@@ -11,7 +11,7 @@ const Home = () => {
       <Header></Header>
       <Hero />
       <SearchBar />
-      <ServicesGrid/>
+      {/* <ServicesGrid/> */}
       <Footer></Footer>
       </div>
    
