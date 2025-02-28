@@ -1,52 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import serviceData from "../../assets/serviceData"; // Service data import
+import serviceData from "../../assets/serviceData";
+import { IoCalendarOutline, IoSearch } from "react-icons/io5";
+import { ImLocation2 } from "react-icons/im";
+import { FaArrowLeft } from "react-icons/fa";
+import { GrStatusGood } from "react-icons/gr";
+import { RxCrossCircled } from "react-icons/rx";
+import { MdOutlineStarHalf } from "react-icons/md";
 
-const ServiceDetail = () => {
-  const { serviceName } = useParams(); // URL se service ka naam le rahe hain
-  const providers = serviceData[serviceName] || []; // Service data filter
-
+function SearchBar() {
   return (
-    <div className="container mx-auto py-6 px-4">
-      <h1 className="text-2xl font-bold text-center text-blue-600">Service: {serviceName}</h1>
-      <p className="mt-2 text-gray-700 text-center text-md">Find the best service providers for {serviceName}:</p>
+    <>
+      <button className="inline text-[#153350] p-2 rounded-full hover:bg-gray-200 transition-all duration-300">
+        <FaArrowLeft className="w-8 h-8" />
+      </button>
+      <div className="flex items-center bg-white border border-gray-300 rounded-full px-4 py-2 shadow-md w-full h-14">
+        <IoSearch className="text-gray-500 w-6 h-6 mr-2" />
+        <input
+          type="text"
+          placeholder="Search for a provider..."
+          className="flex-grow outline-none text-gray-700 font-medium text-lg placeholder-gray-400"
+        />
+      </div>
+    </>
+  );
+}
 
-      {/* Scrollable List - Compact Cards */}
-      <div className="mt-4 flex flex-wrap justify-center gap-4 overflow-y-auto max-h-screen pb-4">
+function ServiceDetail() {
+  const { serviceName } = useParams();
+  const providers = serviceData.filter((provider) => provider.service === serviceName);
+  
+  return (
+    <div className="">
+      <div className='container border-b-4 border-gray-200 pb-6'>
+        <div className='border-b-2 flex justify-center px-9 py-4 border-gray-200'>
+          <SearchBar />
+        </div>
+        <div className="text-2xl font-semibold mt-4 ml-9">{providers.length} Services for "{serviceName}"</div>
+      </div>
+      <div className="container mt-4 px-9">
+        <h3 className="text-xl font-semibold">Available Workers</h3>
+        <select className="block w-28 px-3 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-full shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          <option value="" disabled selected hidden>Sort By</option>
+          <option value="name">Name</option>
+          <option value="date">Date</option>
+          <option value="price">Price</option>
+        </select>
+      </div>
+      <div className="container mt-6 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {providers.map((provider) => (
-          <div
-            key={provider.id}
-            className="bg-white shadow-md p-4 rounded-lg flex items-center w-full max-w-sm border border-gray-200"
-          >
-            {/* Image on left */}
-            <img
-              src={provider.image}
-              alt={provider.name}
-              className="w-16 h-16 object-cover rounded-full border-2 border-blue-400"
-            />
-            
-            {/* Details */}
-            <div className="ml-4 flex-1">
-              <h3 className="text-lg font-semibold text-gray-900">{provider.name} <span className="text-blue-500">✔</span></h3>
-              <p className="text-gray-600 text-sm">⭐ {provider.rating} ({provider.reviews} reviews)</p>
-              <p className="text-gray-600 text-sm">{provider.experience} Experience</p>
-              <p className="text-gray-800 font-semibold">₹ {provider.price}</p>
-              <p className={`text-sm font-semibold ${provider.availability ? "text-green-500" : "text-red-500"}`}>
-                {provider.availability ? "Available Now" : "Not Available"}
-              </p>
-              
-              {/* Button */}
-              <button
-                className="mt-2 bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-700"
-              >
-                Hire Now
-              </button>
-            </div>
-          </div>
+          <ServiceCard key={provider.id} provider={provider} />
         ))}
       </div>
     </div>
   );
-};
+}
+
+function ServiceCard({ provider }) {
+  const [status, setStatus] = useState(provider.availability === "Available");
+  return (
+    <div className="border border-gray-300 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:border-blue-500">
+      <div className='grid grid-cols-3 w-100 p-2 border-b-2 border-gray-500 border-dashed bg-gradient-to-r from-gray-100 to-white'>
+        <img src={provider.image} alt={provider.name} className="h-40 w-40 mr-2 rounded-lg object-cover" />
+        <div className='h-40 w-100 p-2 col-span-2'>
+          <h5 className="text-lg font-semibold">{provider.name}</h5>
+          <p className="flex items-center text-amber-700 font-medium">
+            <MdOutlineStarHalf className='mr-1' /> {provider.rating} <span className="text-gray-600 ml-1">({provider.reviews} Reviews)</span>
+          </p>
+          <p className="text-gray-700">{provider.completed_jobs} similar jobs completed</p>
+          <p className="text-xl font-bold text-blue-700">₹ {provider.price}</p>
+        </div>
+      </div>
+      <div className="flex justify-between px-4 py-3 bg-white text-gray-700">
+        <div className="flex items-center"><IoCalendarOutline className="mr-2" /> {provider.slots} slot</div>
+        <div className="flex items-center"><ImLocation2 className="mr-2" /> {provider.location}</div>
+        {status ? (
+          <div className="flex items-center text-green-600 font-medium"><GrStatusGood className="mr-1" /> Available</div>
+        ) : (
+          <div className="flex items-center text-red-600 font-medium"><RxCrossCircled className="mr-1" /> Busy</div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default ServiceDetail;

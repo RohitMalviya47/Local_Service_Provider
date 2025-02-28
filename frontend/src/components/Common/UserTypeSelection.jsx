@@ -6,9 +6,9 @@ const UserTypeSelection = ({ onUserSelect }) => {
   const navigate = useNavigate();
 
   const handleSelection = (userType) => {
-    localStorage.setItem("userType", userType);  // ✅ UserType ko localStorage me save kiya
+    localStorage.setItem("userType", userType);  
     onUserSelect(userType);
-    navigate("/");  // ✅ Home Page par redirect kar diya
+    navigate("/");  
   };
 
   return (
