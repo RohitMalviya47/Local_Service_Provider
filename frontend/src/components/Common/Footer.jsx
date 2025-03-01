@@ -11,7 +11,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white py-6">
+    <footer className="bg-gray-900 text-white py-6 hidden md:block">
       <div className="container mx-auto px-6 md:px-12">
         {/* Top Section: Project Info and Links */}
         <div className="flex flex-wrap justify-between mb-3">

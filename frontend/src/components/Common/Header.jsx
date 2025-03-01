@@ -63,11 +63,11 @@ const Header = () => {
         </div>
       </header>
 
-      {/* ✅ Mobile Bottom Navigation (Visible Below 600px) */}
-      <div className="fixed bottom-0 w-full bg-gray-100 backdrop-blur-lg shadow-md flex justify-evenly py-3 z-50 md:hidden">
+      {/* ✅ Mobile Bottom Navigation (Optimized for smaller screens) */}
+      <div className="fixed bottom-0 w-full bg-gray-100 backdrop-blur-lg shadow-md flex justify-evenly py-2 z-50 md:hidden">
         {menuItems.map((item, index) => (
           <Link key={index} to={item.path} className="flex flex-col items-center text-gray-900">
-            {item.icon}
+            {React.cloneElement(item.icon, { className: "h-6 w-6 text-red-900" })}
           </Link>
         ))}
       </div>
