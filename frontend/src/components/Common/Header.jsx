@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaInbox, FaCog, FaUser, FaBell } from "react-icons/fa";
-import { HiMenu, HiX } from "react-icons/hi";
 import img from "../../assets/service_logo_transparent-removebg-preview.png";
 
 const Header = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [userType, setUserType] = useState(localStorage.getItem("userType"));
 
@@ -20,80 +18,60 @@ const Header = () => {
     };
   }, []);
 
-  const textColorClass = isScrolled ? "text-white" : "text-white";
   const translateClass = isScrolled ? "-translate-y-full" : "translate-y-0";
 
   // 🔥 Navigation Menu Based on User Type
   const menuItems = userType === "provider"
     ? [
-        { name: "Home", icon: <FaHome />, path: "/" },
-        { name: "Jobs", icon: <FaInbox />, path: " /jobs" },
-        { name: "Notifications", icon: <FaBell />, path: "/notification" },
-        { name: "Profile", icon: <FaUser />, path: "/profile" },
-        { name: "Settings", icon: <FaCog />, path: "/setting" },
+        { name: "Home", icon: <FaHome className="h-8 w-8 text-red-900" />, path: "/" },
+        { name: "Jobs", icon: <FaInbox className="h-8 w-8 text-red-900" />, path: "/jobs" },
+        { name: "Notifications", icon: <FaBell className="h-8 w-8 text-red-900" />, path: "/notification" },
+        { name: "Profile", icon: <FaUser className="h-8 w-8 text-red-900" />, path: "/profile" },
+        { name: "Settings", icon: <FaCog className="h-8 w-8 text-red-900" />, path: "/setting" },
       ]
     : [
-        { name: "Home", icon: <FaHome />, path: "/" },
-        { name: "Services", icon: <FaInbox />, path: "/services" },
-        { name: "Notifications", icon: <FaBell />, path: "/notification" },
-        { name: "Profile", icon: <FaUser />, path: "/profile" },
-        { name: "Settings", icon: <FaCog />, path: "/setting" },
+        { name: "Home" , icon: <FaHome className="h-8 w-8 text-red-900" />, path: "/" },
+        { name: "Services", icon: <FaInbox className="h-8 w-8 text-red-900" />, path: "/services" },
+        { name: "Notifications", icon: <FaBell className="h-8 w-8 text-red-900" />, path: "/notification" },
+        { name: "Profile", icon: <FaUser className="h-8 w-8 text-red-900" />, path: "/profile" },
+        { name: "Settings", icon: <FaCog className="h-8 w-8 text-red-900" />, path: "/setting" },
       ];
 
   return (
-    <header className={`fixed w-full font-bold z-10 top-0 transition-transform duration-300 ${translateClass}`}>
-      <div className="container mx-auto flex justify-between items-center px-6 rounded-lg">
-        {/* Logo */}
-        <div><img src={img} width={100} alt="Logo" className="rounded-full" /></div>
-
-        {/* Desktop Menu */}
-        <nav className={`hidden md:flex space-x-6 text-lg ${textColorClass}`}>
-          {menuItems.map((item, index) => (
-            <Link
-              key={index}
-              to={item.path}
-              className={`flex items-center space-x-2 hover:text-gray-500  rounded-md p-2 ${textColorClass}`}
-              style={{textDecoration:'none'}}
-            >
-              {item.icon} <span>{item.name}</span>
-            </Link>
-          ))}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button onClick={() => setIsSidebarOpen(true)}>
-            <HiMenu className={`w-8 h-8 ${textColorClass}`} />
-          </button>
-        </div>
-      </div>
-
-      {/* Sidebar (Mobile Menu) */}
-      {isSidebarOpen && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-90 transition-transform transform md:hidden w-64 p-6 flex flex-col h-full rounded-lg">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-bold">Menu</h2>
-            <button onClick={() => setIsSidebarOpen(false)}>
-              <HiX className="w-8 h-8" />
-            </button>
+    <div className="grid grid-cols-1 pb-16">
+      {/* ✅ Desktop & Tablet Navbar (Visible Above 600px) */}
+      <header className={`fixed w-full font-bold hidden md:flex z-10 transition-transform duration-300 ${translateClass} py-0.5 `}>
+        <div className="container mx-auto flex justify-between items-center px-6 rounded-lg">
+          {/* ✅ Logo: Always visible above 769px */}
+          <div className="block">
+            <img src={img} width={60} alt="Logo" className="rounded-full bg-red-800"  />
           </div>
-
-          <nav className="flex flex-col space-y-4">
+          
+          {/* ✅ Navigation Menu */}
+          <nav className="hidden lg:flex space-x-6 text-lg text-white md:flex"> {/* ✅ Show menu above 769px */}
             {menuItems.map((item, index) => (
               <Link
                 key={index}
                 to={item.path}
-                className="flex items-center space-x-3 text-lg decoration-0 hover:text-gray-500 rounded-md p-2"
-                onClick={() => setIsSidebarOpen(false)}
-                style={{textDecoration:'none'}}
+                className="flex items-center space-x-2 hover:text-gray-500 rounded-md p-2"
+                style={{ textDecoration: "none" }}
               >
                 {item.icon} <span>{item.name}</span>
               </Link>
             ))}
           </nav>
         </div>
-      )}
-    </header>
+      </header>
+
+      {/* ✅ Mobile Bottom Navigation (Visible Below 600px) */}
+      <div className="fixed bottom-0 w-full bg-gray-100 backdrop-blur-lg shadow-md flex justify-evenly py-3 z-50 md:hidden">
+        {menuItems.map((item, index) => (
+          <Link key={index} to={item.path} className="flex flex-col items-center text-gray-900">
+            {item.icon}
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 };
 
