@@ -4,7 +4,6 @@ import { FaHome, FaInbox, FaCog, FaUser, FaBell } from "react-icons/fa";
 import img from "../../assets/service_logo_transparent-removebg-preview.png";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [userType, setUserType] = useState(localStorage.getItem("userType"));
   const [isVisible, setIsVisible] = useState(true);
 
@@ -12,7 +11,6 @@ const Header = () => {
     let lastScrollY = window.scrollY;
     
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
       if (window.scrollY > lastScrollY) {
         setIsVisible(false);
       } else {
@@ -26,8 +24,6 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const translateClass = isScrolled ? "-translate-y-full" : "translate-y-0";
 
   // 🔥 Navigation Menu Based on User Type
   const menuItems = userType === "provider"
@@ -48,31 +44,39 @@ const Header = () => {
 
   return (
     <div className="grid grid-cols-1 pb-16">
-      {/* ✅ Desktop & Tablet Navbar (Visible Above 600px) */}
-      <header className={`fixed w-full font-bold hidden md:flex z-10 transition-transform duration-300 ${translateClass} py-0.5 `}>
+      {/* ✅ Desktop & Tablet Navbar */}
+      <header
+        className={`fixed w-full pb-1 font-bold hidden md:flex z-10 transition-transform duration-300 shadow-lg bg-gray-600 text-white ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+      >
         <div className="container mx-auto flex justify-between items-center px-6 rounded-lg">
-          {/* ✅ Logo: Always visible above 769px */}
+          {/* ✅ Logo */}
           <div className="block">
-            <img src={img} width={60} alt="Logo" className="rounded-full bg-red-800" />
+            <img
+              src={img}
+              width={60}
+              alt="Logo"
+              className="rounded-full bg-blue-800"
+            />
           </div>
-          
-          {/* ✅ Navigation Menu */}
-          <nav className="hidden lg:flex space-x-6 text-lg text-white md:flex"> {/* ✅ Show menu above 769px */}
+
+          {/* ✅ Navigation Menu - Centered */}
+          <nav className="hidden lg:flex space-x-6 text-lg md:flex mx-auto">
             {menuItems.map((item, index) => (
               <Link
                 key={index}
                 to={item.path}
-                className="flex items-center space-x-2 hover:text-gray-500 rounded-md p-2"
+                className="flex items-center space-x-2 px-4 py-2 rounded-md transition duration-300 ease-in-out hover:bg-neutral-700 hover:text-white"
                 style={{ textDecoration: "none" }}
               >
-                {React.cloneElement(item.icon, { className: "h-8 w-8 text-red-900" })} <span>{item.name}</span>
+                {React.cloneElement(item.icon, { className: "h-6 w-6 text-white" })} 
+                <span>{item.name}</span>
               </Link>
             ))}
           </nav>
         </div>
       </header>
 
-      {/* ✅ Mobile Bottom Navigation (Optimized for smaller screens) */}
+      {/* ✅ Mobile Bottom Navigation */}
       <div className={`fixed bottom-0 w-full bg-gray-100 backdrop-blur-lg shadow-md flex justify-evenly py-2 z-50 md:hidden transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
         {menuItems.map((item, index) => (
           <Link 
