@@ -41,7 +41,7 @@ const Header = () => {
       ];
 
   return (
-    <header className={`fixed w-full font-bold z-10 top-0 transition-transform duration-300 ${translateClass}`}>
+    <header className={`fixed w-full hidden md:block font-bold z-10 top-0 transition-transform duration-300 ${translateClass}`}>
       <div className="container mx-auto flex justify-between items-center px-6 rounded-lg">
         {/* Logo */}
         <div><img src={img} width={100} alt="Logo" className="rounded-full" /></div>
