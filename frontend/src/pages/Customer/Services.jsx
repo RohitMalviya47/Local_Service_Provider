@@ -42,7 +42,7 @@ const Services = () => {
     </p>
   </div>
   <div className="w-full md:w-1/2 flex justify-end items-center">
-    <img src={BgImage} alt="Services" className="w-90 rounded-lg" />
+    <img src={BgImage} alt="Services" className="w-89 h-89 rounded-lg" />
   </div>
 </div>
 

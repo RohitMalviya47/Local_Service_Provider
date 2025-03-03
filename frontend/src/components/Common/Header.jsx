@@ -25,7 +25,6 @@ const Header = () => {
     };
   }, []);
 
-  // 🔥 Navigation Menu Based on User Type
   const menuItems = userType === "provider"
     ? [
         { name: "Home", icon: <FaHome />, path: "/" },
@@ -44,6 +43,11 @@ const Header = () => {
 
   return (
     <div className="grid grid-cols-1 pb-16">
+      {/* ✅ Mobile Top Navigation with Logo */}
+      <div className="fixed top-0 left-2 w-full  shadow-md flex items-center py-2 z-50 md:hidden">
+        <img src={img} width={40} alt="Logo" className="rounded-full bg-blue-800" />
+      </div>
+      
       {/* ✅ Desktop & Tablet Navbar */}
       <header
         className={`fixed w-full pb-1 font-bold hidden md:flex z-10 transition-transform duration-300 shadow-lg bg-gray-600 text-white ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
@@ -77,7 +81,7 @@ const Header = () => {
       </header>
 
       {/* ✅ Mobile Bottom Navigation */}
-      <div className={`fixed bottom-0 w-full bg-gray-100 backdrop-blur-lg shadow-md flex justify-evenly py-2 z-50 md:hidden transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
+      <div className={`fixed bottom-0 w-full bg-gray-100 backdrop-blur-lg shadow-md flex justify-evenly items-center py-2 z-50 md:hidden transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
         {menuItems.map((item, index) => (
           <Link 
             key={index} 
@@ -85,7 +89,7 @@ const Header = () => {
             className="flex flex-col items-center text-gray-900 text-xs" 
             style={{ textDecoration: "none" }}
           >
-            {React.cloneElement(item.icon, { className: "h-6 w-6 text-red-900 " })}
+            {React.cloneElement(item.icon, { className: "h-6 w-6 text-red-900" })}
             <span className="text-xs mt-1">{item.name}</span>
           </Link>
         ))}
