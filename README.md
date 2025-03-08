@@ -1,7 +1,7 @@
 ﻿# Local_Service_Provider
 
 he idea for your local service provider project is great! In this, users will be able to see profiles of local service providers (like plumbers, electricians, etc.) and hire them based on their needs. Building this project using the MERN stack (MongoDB, Express.js, React, Node.js) is a solid choice because this stack is powerful, scalable, and widely used for modern web development.
-             
+                                  
 Overview of the MERN Stack:                                                               
 MongoDB:                                                                                                                                                         
                                                                                                            
